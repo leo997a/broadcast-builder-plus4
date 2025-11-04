@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Design System - نظام الداعمين */
+    
+    /* الألوان الأساسية */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 15%;
+    
+    /* تدرجات ذهبية */
+    --gold: 45 100% 51%;
+    --gold-light: 45 100% 65%;
+    --gold-dark: 38 92% 50%;
+    
+    /* تدرجات بنفسجية */
+    --purple: 250 60% 60%;
+    --purple-light: 250 60% 70%;
+    --purple-dark: 255 50% 45%;
+    
+    /* ألوان البطاقات */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
+    
+    /* الألوان الأساسية للنظام */
+    --primary: 250 60% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 45 100% 51%;
+    --secondary-foreground: 240 10% 15%;
+    
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    
+    --accent: 45 100% 51%;
+    --accent-foreground: 240 10% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 250 60% 60%;
+    
+    --radius: 1rem;
+    
+    /* تدرجات مخصصة */
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 51%), hsl(38 92% 50%));
+    --gradient-purple: linear-gradient(135deg, hsl(250 60% 60%), hsl(255 50% 45%));
+    --gradient-main: linear-gradient(135deg, hsl(250 60% 60%), hsl(255 50% 45%));
+    
+    /* ظلال */
+    --shadow-gold: 0 8px 25px hsl(45 100% 51% / 0.3);
+    --shadow-card: 0 20px 60px hsl(0 0% 0% / 0.1);
+    --shadow-elegant: 0 10px 30px hsl(0 0% 0% / 0.08);
+    
+    /* انتقالات */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* الوضع الداكن - للعرض في OBS */
+    --background: 240 20% 10%;
+    --foreground: 0 0% 100%;
+    
+    --card: 240 15% 15%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 240 15% 15%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 250 60% 65%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 45 100% 60%;
+    --secondary-foreground: 240 10% 15%;
+    
+    --muted: 240 10% 20%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 45 100% 60%;
+    --accent-foreground: 240 10% 15%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 10% 25%;
+    --input: 240 10% 25%;
+    --ring: 250 60% 65%;
+    
+    --gradient-main: linear-gradient(135deg, hsl(240 20% 10%), hsl(240 15% 15%), hsl(240 20% 20%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* تحسينات للنصوص العربية */
+  [dir="rtl"] {
+    font-family: 'Cairo', 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* تدرجات مخصصة */
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .bg-gradient-purple {
+    background: var(--gradient-purple);
+  }
+  
+  .bg-gradient-main {
+    background: var(--gradient-main);
+  }
+  
+  /* تأثيرات زجاجية */
+  .glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* انيميشن متقدم */
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background-size: 200% 100%;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* سكرول مخصص */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--gradient-gold);
+    border-radius: 3px;
+  }
+}
